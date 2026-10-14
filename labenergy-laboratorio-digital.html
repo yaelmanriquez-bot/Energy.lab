@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab ENERGY — Laboratorio digital energético al alcance de todos</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f6f9;--p:#ffffff;--p2:#eef3f7;--l:#d8e1e8;--t:#1b2a35;--d:#51636f;--f:#7a8b97;--am:#c25e00;--cy:#0b8a84;--rd:#d13438;--gn:#2a8a50}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:'Space Grotesk',sans-serif;padding:24px 16px 60px;font-size:14px;line-height:1.55}
+.w{max-width:1100px;margin:0 auto}.m{font-family:'JetBrains Mono',monospace}
+header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--l);padding-bottom:16px;margin-bottom:16px}
+h1{font-size:22px;margin:0 0 2px}header p{margin:0;color:var(--d)}
+.tag{display:inline-block;margin-top:8px;font-size:12px;padding:4px 12px;border:1px solid var(--l);border-radius:20px;background:var(--p);color:var(--gn)}
+.brand{display:flex;align-items:center;gap:12px;text-align:right}.brand .nm{font:700 24px 'Sora',sans-serif;letter-spacing:.02em;color:#0f3d57;line-height:1}.brand .nm b{color:var(--am)}.brand .sl{font-size:11.5px;color:var(--d);margin-top:5px;max-width:230px}
+@media(max-width:640px){header{flex-direction:column-reverse;align-items:flex-start}.brand{text-align:left}}
+nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:18px;border-bottom:1px solid var(--l)}
+nav button{background:none;border:0;border-bottom:2px solid transparent;color:var(--d);padding:10px 14px;font:500 13px 'Space Grotesk';cursor:pointer;margin-bottom:-1px}
+nav button.on{color:var(--am);border-color:var(--am)}
+.tab{display:none}.tab.on{display:block}
+.g{display:grid;grid-template-columns:310px 1fr;gap:16px;margin-bottom:16px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:760px){.g,.g2{grid-template-columns:1fr}}
+.c{background:var(--p);border:1px solid var(--l);border-radius:10px;padding:16px 18px;margin-bottom:16px}.g .c,.g2 .c{margin:0}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--f);font-weight:500;margin:0 0 12px}
+h3{font-size:15px;margin:14px 0 6px}
+label{display:block;font-size:12px;color:var(--d);margin:10px 0 5px}
+select,input,textarea{width:100%;background:var(--bg);border:1px solid var(--l);color:var(--t);border-radius:6px;padding:8px 10px;font:13px 'JetBrains Mono',monospace}
+textarea{font-family:'Space Grotesk';min-height:64px}input[type=range]{padding:0;accent-color:var(--am)}
+button.b{font:500 13px 'Space Grotesk';border-radius:6px;border:1px solid var(--l);background:var(--p2);color:var(--t);padding:9px 14px;cursor:pointer}
+button.b:hover{border-color:var(--f)}button.pr{background:var(--am);color:#fff;border-color:var(--am);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.row>*{flex:1}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.k{background:var(--bg);border:1px solid var(--l);border-radius:8px;padding:9px 11px}.k small{display:block;color:var(--f);font-size:11px;text-transform:uppercase}.k b{font:700 18px 'JetBrains Mono'}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid #e3e9ee}
+th{color:var(--f);font-size:11px;text-transform:uppercase;font-weight:500}td.n,th.n{text-align:right;font-family:'JetBrains Mono'}
+.ov{overflow-x:auto}.ok{color:var(--gn)}.bad{color:var(--rd)}.am{color:var(--am)}.dim{color:var(--d)}
+.note{font-size:12px;color:var(--f);margin-top:10px}
+.box{border-left:3px solid var(--am);background:var(--p2);padding:10px 14px;border-radius:0 6px 6px 0;margin:10px 0}
+.arch{display:flex;gap:6px;align-items:stretch;flex-wrap:wrap;margin:10px 0}.arch div{flex:1;min-width:120px;background:var(--p2);border:1px solid var(--l);border-radius:8px;padding:10px;font-size:12px}.arch b{display:block;color:var(--cy)}
+.sus label{color:var(--t);font-size:13px;margin:12px 0 4px}.sus .o{display:flex;gap:6px}.sus .o label{margin:0;flex:1;text-align:center;font-size:12px;color:var(--d)}
+.sus .o input{width:auto}ul{padding-left:18px;margin:6px 0}
+</style></head><body><div class="w">
+<header><div><h1>Laboratorio digital de eficiencia en baja tensión</h1>
+<p>G09 — Proyecto de innovación tecnológica · Energía y eficiencia</p>
+<span class="tag">● Simulación digital reproducible · semilla <span id="seedTag" class="m"></span></span></div>
+<div class="brand"><div><div class="nm">Lab <b>ENERGY</b></div><div class="sl">Laboratorio digital energético al alcance de todos</div></div>
+<!-- LOGO: reemplazar este SVG por <img src="logo.png" height="56" alt="Logo LabEnergy"> -->
+<svg id="logo" width="56" height="56" viewBox="0 0 56 56" aria-label="Logo LabEnergy"><circle cx="28" cy="28" r="26" fill="#0f3d57"/><path d="M31 9 18 31h9l-3 16 14-23h-9z" fill="#f5a623"/></svg></div></header>
+<nav id="nav"></nav>
+
+<!-- 1. ENSAYO -->
+<section class="tab on" id="t-lab"><div class="g">
+<div class="c"><h2>Parámetros del ensayo</h2>
+<label>Carga bajo ensayo</label><select id="load" onchange="refresh()"></select>
+<label>Tensión de la fuente DC: <b id="vt" class="am m">12.0 V</b></label><input type="range" id="volt" min="0" max="15" step="0.5" value="12" oninput="refresh()">
+<label>Semilla del ruido de medición</label><input type="number" id="seed" value="2026" onchange="setSeed()">
+<div class="row"><button class="b pr" id="run" onclick="toggleRun()">▶ Iniciar ensayo</button><button class="b" onclick="addRec('manual')">📌 Registrar punto</button></div>
+<div class="row"><button class="b" onclick="sweep()">⚙ Barrido automático</button><button class="b" onclick="clearAll()">Limpiar</button></div>
+<div class="kp"><div class="k"><small>Corriente</small><b id="mI">--</b></div><div class="k"><small>Potencia</small><b id="mP">--</b></div>
+<div class="k"><small>Resistencia</small><b id="mR">--</b></div><div class="k"><small>Flujo luminoso</small><b id="mL">--</b></div>
+<div class="k"><small>Eficacia</small><b id="mK">--</b></div><div class="k"><small>Eficiencia η</small><b id="mE" class="am">--</b></div></div>
+<p class="note">Fuente ≤ 15 V DC: sin riesgo de choque eléctrico. Los modelos son simplificados (ver Guía).</p></div>
+<div class="c"><h2>Potencia en tiempo real (W)</h2><div style="height:300px"><canvas id="live"></canvas></div>
+<p class="note">Muestreo cada 0,5 s. «Barrido automático» registra 4 cargas × 5 tensiones (6–14 V) con la misma semilla: el resultado es idéntico en cada ejecución.</p></div></div></section>
+
+<!-- 2. GUIA -->
+<section class="tab" id="t-guide"><div class="c"><h2>Guía de laboratorio N°1 — Eficiencia de conversión en cargas de baja tensión</h2>
+<p><b>Pregunta de investigación:</b> ¿cómo cambia la fracción de potencia eléctrica convertida en luz (o trabajo útil) según el tipo de carga y la tensión aplicada?</p>
+<div class="box"><b>Hipótesis H1:</b> a 12 V, el módulo LED entrega al menos 5 veces más lúmenes por watt que la lámpara incandescente, y la resistencia pura (control) convierte 0 % de la potencia en luz.</div>
+<label>Su predicción antes de medir (¿cuántas veces más eficiente? ¿por qué?)</label><textarea placeholder="Escriba su hipótesis…"></textarea>
+<h3>Variables</h3><div class="ov"><table><tr><th>Tipo</th><th>Variable</th><th>Cómo se maneja</th></tr>
+<tr><td>Independiente</td><td>Tensión V (0–15 V DC) y tipo de carga</td><td>Control deslizante / selector</td></tr>
+<tr><td>Dependiente</td><td>I, P = V·I, R = V/I, flujo (lm), eficacia K (lm/W), η (%)</td><td>Calculadas por el motor de datos</td></tr>
+<tr><td>Controladas</td><td>Fuente DC ideal, temperatura ambiente, ruido ±1 % con semilla fija</td><td>Constantes del modelo</td></tr></table></div>
+<h3>Medida de eficiencia</h3>
+<p>Lámparas: <span class="m">η = K / 250 lm/W</span> (250 lm/W ≈ luz blanca ideal, supuesto del modelo). Motor: <span class="m">η = P_mecánica / P_eléctrica</span>. Calor disipado: <span class="m">P·(1 − η)</span>. Para lámparas, el valor de K (lm/W) es el indicador comparativo principal.</p>
+<h3>Modelos (resumen)</h3><ul>
+<li>Incandescente: R(V) = 14,5·(V/12)^0,2 Ω — la resistencia <b>aumenta</b> con la temperatura del filamento; K = 11·(V/12)^1,2 lm/W.</li>
+<li>LED: conduce sobre ~9 V, I = 0,055·(V−9) A; K ≈ 100 lm/W, decrece levemente con sobrepotencia.</li>
+<li>Resistencia 10 Ω: I = V/R; toda la potencia se disipa como calor.</li>
+<li>Motor DC: I = 0,035·V A; η ≈ 62 % máx. a 12 V.</li></ul>
+<h3>Procedimiento</h3><ol>
+<li>Escriba su predicción. 2. Ejecute «Barrido automático» (o registre puntos manualmente a 12 V para cada carga).</li>
+<li>Vaya a <i>Resultados</i>: compare curvas I–V y η–V. 4. Revise la proyección residencial y conteste el cuestionario. 5. Descargue el CSV.</li></ol>
+<p class="note">Valores de K y precios son referenciales de catálogo; el modelo es una simulación, no una medición de hardware.</p></div></section>
+
+<!-- 3. RESULTADOS -->
+<section class="tab" id="t-res"><div class="c"><h2>Datos registrados</h2>
+<div class="ov"><table><thead><tr><th>Carga</th><th class="n">V</th><th class="n">I (mA)</th><th class="n">P (W)</th><th class="n">R (Ω)</th><th class="n">lm</th><th class="n">K (lm/W)</th><th class="n">η (%)</th></tr></thead><tbody id="tb"></tbody></table></div>
+<div class="row"><button class="b" onclick="csv()">📥 Descargar CSV</button></div></div>
+<div class="g2"><div class="c"><h2>Curva I–V</h2><div style="height:250px"><canvas id="cIV"></canvas></div></div>
+<div class="c"><h2>Eficiencia η (%) vs tensión</h2><div style="height:250px"><canvas id="cEta"></canvas></div></div></div>
+<div class="c"><h2>Verificación de la hipótesis H1 (a 12 V)</h2><div id="h1" class="dim">Registre datos para evaluar.</div>
+<h3>Cuestionario</h3><label>1. El filamento incandescente aumenta su resistencia al calentarse. Con sus datos, ¿qué ocurre con R al subir de 6 V a 14 V y por qué?</label><textarea></textarea>
+<label>2. Para un mismo flujo luminoso, ¿qué fracción de la potencia ahorra el LED? Fundamente con K.</label><textarea></textarea></div></section>
+
+<!-- 4. PROYECCION -->
+<section class="tab" id="t-proj"><div class="c"><h2>Proyección residencial y análisis de costos</h2>
+<div class="g2"><div><label>Flujo luminoso requerido por lámpara (lm)</label><input type="number" id="lm" value="800" oninput="proj()">
+<label>Horas de uso al día</label><input type="number" id="hrs" value="5" step="0.5" oninput="proj()">
+<label>N° de lámparas</label><input type="number" id="nl" value="6" oninput="proj()"></div>
+<div><label>Tarifa (CLP/kWh)</label><input type="number" id="tar" value="150" oninput="proj()">
+<label>Precio incandescente / LED (CLP) — referencial</label><div class="row" style="margin:0"><input type="number" id="pi" value="800" oninput="proj()"><input type="number" id="pl" value="2500" oninput="proj()"></div>
+<label>Vida útil incandescente / LED (h) — referencial</label><div class="row" style="margin:0"><input type="number" id="vi" value="1000" oninput="proj()"><input type="number" id="vl" value="15000" oninput="proj()"></div></div></div>
+<div class="ov"><table><thead><tr><th>Indicador</th><th class="n">Incandescente</th><th class="n">LED</th><th class="n">Diferencia</th></tr></thead><tbody id="pt"></tbody></table></div>
+<p class="note" id="src"></p>
+<p class="note">Factor de emisión referencial 0,4 kg CO₂/kWh (matriz chilena). Costo total = lámparas necesarias + energía en 15.000 h de uso.</p></div>
+<div class="c"><h2>Benchmarking y riesgos</h2><div class="ov"><table><tr><th>Alternativa</th><th>Costo</th><th>Requiere hardware</th><th>Valor educativo</th><th>Limitación</th></tr>
+<tr><td>Enchufe inteligente</td><td>Medio</td><td>Sí, + app y nube</td><td>Bajo</td><td>Cuenta externa, Wi-Fi</td></tr>
+<tr><td>Pinza amperimétrica</td><td>Medio</td><td>Sí</td><td>Bajo (uso técnico)</td><td>Manipulación eléctrica</td></tr>
+<tr><td><b>LabEnergy digital</b></td><td>Nulo</td><td>No</td><td>Alto (guía + hipótesis)</td><td>Modelo simulado, no mide un aparato real</td></tr></table></div>
+<h3>Riesgos y mitigación</h3><ul><li>Extrapolar el modelo de 12 V a la red de 220 V: se declara como proyección, no como medición.</li><li>Valores de catálogo desactualizados: precios y vida útil son editables.</li><li>Futura integración con hardware (ESP32 + sensor de corriente): fuera del alcance de esta entrega.</li></ul></div></section>
+
+<!-- 5. VALIDACION -->
+<section class="tab" id="t-val"><div class="c"><h2>Protocolo de validación de usabilidad</h2>
+<p><b>Método:</b> sesión individual de ~15 min con la tarea guiada (ejecutar barrido, leer la comparación LED vs incandescente, estimar ahorro mensual) y cuestionario SUS. <b>Muestra objetivo:</b> n ≥ 10 usuarios residenciales. <b>Criterio:</b> SUS ≥ 68 y tarea completada sin ayuda.</p>
+<div class="row"><div><label>Participante (código)</label><input id="pid" placeholder="P01"></div><div><label>¿Completó la tarea sin ayuda?</label><select id="tsk"><option>Sí</option><option>No</option></select></div></div>
+<div class="sus" id="sus"></div><div class="row"><button class="b pr" onclick="saveSus()">Guardar sesión</button><button class="b" onclick="susCsv()">📥 Exportar sesiones</button></div></div>
+<div class="c"><h2>Resultados de validación</h2><div id="susRes" class="dim"></div>
+<p class="note">No se incluyen resultados inventados: esta tabla se llena solo con las sesiones realmente registradas. Los datos quedan en este navegador; exporte el CSV para consolidarlos.</p></div></section>
+
+<!-- 6. DOC -->
+<section class="tab" id="t-doc"><div class="c"><h2>Arquitectura unificada (100% digital)</h2>
+<div class="arch"><div><b>1 · Modelo físico</b>Ecuaciones por carga (JavaScript)</div><div><b>2 · Motor de datos</b>Muestreo 0,5 s, ruido con semilla, cálculo I, P, R, K, η</div><div><b>3 · Visualización</b>Chart.js + indicadores cuantitativos</div><div><b>4 · Análisis</b>Tabla, H1, CLP y CO₂, SUS</div><div><b>5 · Exportación</b>CSV reproducible</div></div>
+<p class="note">Se eliminan ESP32, Arduino, HC-05, ACS712 y Web Bluetooth del producto entregable: pasan a «trabajo futuro».</p>
+<h3>Estado de implementación</h3><div class="ov"><table><tr><th>Componente</th><th>Estado</th></tr>
+<tr><td>Simulador de 5 cargas y barrido reproducible</td><td class="ok">Implementado (simulado)</td></tr>
+<tr><td>Guía, hipótesis, variables, medida de eficiencia</td><td class="ok">Implementado</td></tr>
+<tr><td>Proyección CLP/CO₂, costos y benchmarking</td><td class="ok">Implementado (valores referenciales)</td></tr>
+<tr><td>Instrumento de validación (SUS)</td><td class="ok">Implementado</td></tr>
+<tr><td>Resultados con usuarios</td><td class="am">Pendiente de aplicar (n objetivo = 10)</td></tr>
+<tr><td>Integración con hardware real</td><td class="bad">No implementado — proyectado</td></tr></table></div>
+<h3>Pruebas automáticas del modelo</h3><div class="row" style="justify-content:flex-start"><button class="b pr" style="flex:0" onclick="tests()">▶ Ejecutar pruebas</button></div><div id="tr" class="m" style="margin-top:10px;font-size:12px"></div>
+<h3>Instalación y repositorio</h3><p>Archivo único <span class="m">index.html</span>: abrir en cualquier navegador (celular, tablet o PC) o publicar en GitHub Pages. Requiere conexión solo para cargar Chart.js y las tipografías. Estructura sugerida del repositorio: <span class="m">index.html · README.md · /docs (informe, guía) · /datos (CSV exportados)</span>.</p>
+<h3>Trazabilidad de la retroalimentación</h3><div class="ov"><table><tr><th>Observación</th><th>Cambio</th></tr>
+<tr><td>Delimitar ensayo, variables, hipótesis y medida de eficiencia</td><td>Pestaña Guía; indicadores K y η</td></tr>
+<tr><td>Unificar arquitectura; distinguir construido vs proyectado</td><td>Esta pestaña; hardware retirado</td></tr>
+<tr><td>Evidencia y datos de prueba</td><td>Barrido reproducible, CSV, pruebas automáticas</td></tr>
+<tr><td>Guía, usuarios, benchmarking, costos/riesgos</td><td>Guía, SUS, pestaña Proyección</td></tr>
+<tr><td>Entregable digital en pantalla</td><td>Aplicación web responsiva sin hardware</td></tr></table></div></div></section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const $=id=>document.getElementById(id),EF=0.4,KID=250;
+const LD={inc:{n:'Incandescente',I:v=>v>0?v/(14.5*Math.pow(v/12,.2)):0,K:v=>11*Math.pow(v/12,1.2)},
+led:{n:'Módulo LED',I:v=>v>9?.055*(v-9):0,K:(v,p)=>Math.max(0,100-3*Math.max(0,p-2))},
+res:{n:'Resistencia 10 Ω',I:v=>v/10,K:()=>0},mot:{n:'Motor DC',I:v=>.035*v,E:v=>Math.max(0,.62-.01*Math.abs(v-12))},
+off:{n:'Circuito abierto',I:()=>0,K:()=>0}};
+const COL={inc:'#d97706',led:'#0b8a84',res:'#7a8b97',mot:'#c0392b'};
+function rng32(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+let rnd,run=false,timer=null,t=0,rec=[],hist=[],sus=[];
+function meas(k,v,r){const L=LD[k],I=Math.max(0,L.I(v)*(1+(r()-.5)*.02)),P=v*I,K=L.K?L.K(v,P):0,lm=K*P,eta=P>0?(L.E?L.E(v)*100:K/KID*100):0;return{k,v,i:I*1000,p:P,r:I>0?v/I:0,K,lm,eta}}
+function setSeed(){rnd=rng32(+$('seed').value||1);$('seedTag').textContent=$('seed').value}
+function show(m){$('mI').textContent=m.i.toFixed(0)+' mA';$('mP').textContent=m.p.toFixed(2)+' W';$('mR').textContent=m.r.toFixed(1)+' Ω';$('mL').textContent=m.lm.toFixed(0)+' lm';$('mK').textContent=m.K.toFixed(1)+' lm/W';$('mE').textContent=m.eta.toFixed(1)+' %'}
+function cur(){return meas($('load').value,+$('volt').value,rnd)}
+function refresh(){$('vt').textContent=(+$('volt').value).toFixed(1)+' V';show(cur())}
+function tick(){t+=.5;const m=cur();show(m);hist.push({t,...m});live.data.labels.push(t.toFixed(1));live.data.datasets[0].data.push(m.p);if(live.data.labels.length>40){live.data.labels.shift();live.data.datasets[0].data.shift()}live.update('none')}
+function toggleRun(){run=!run;$('run').textContent=run?'⏹ Pausar ensayo':'▶ Iniciar ensayo';if(run)timer=setInterval(tick,500);else clearInterval(timer)}
+function addRec(src,m){m=m||cur();m.src=src;rec.push(m);render()}
+function sweep(){const r=rng32(+$('seed').value||1);rec=rec.filter(x=>x.src!=='barrido');['inc','led','res','mot'].forEach(k=>[6,8,10,12,14].forEach(v=>{const m=meas(k,v,r);m.src='barrido';rec.push(m)}));render();go('res')}
+function clearAll(){rec=[];hist=[];t=0;live.data.labels=[];live.data.datasets[0].data=[];live.update();setSeed();render()}
+function avgAt12(k,f){const a=rec.filter(x=>x.k===k&&x.v===12);return a.length?{v:a.reduce((s,x)=>s+x[f],0)/a.length,m:1}:{v:(()=>{const m=meas(k,12,()=>.5);return m[f]})(),m:0}}
+function render(){$('tb').innerHTML=rec.length?rec.map(x=>`<tr><td>${LD[x.k].n}</td><td class=n>${x.v}</td><td class=n>${x.i.toFixed(0)}</td><td class=n>${x.p.toFixed(2)}</td><td class=n>${x.r.toFixed(1)}</td><td class=n>${x.lm.toFixed(0)}</td><td class=n>${x.K.toFixed(1)}</td><td class=n>${x.eta.toFixed(1)}</td></tr>`).join(''):'<tr><td colspan=8 class=dim>Sin datos. Use «Registrar punto» o «Barrido automático».</td></tr>';
+ ['cIV','cEta'].forEach((id,j)=>{const c=id==='cIV'?civ:ceta;c.data.datasets=Object.keys(COL).filter(k=>j==0||k!=='res').map(k=>({label:LD[k].n,borderColor:COL[k],backgroundColor:COL[k],tension:.2,data:rec.filter(x=>x.k===k).sort((a,b)=>a.v-b.v).map(x=>({x:x.v,y:j?x.eta:x.i}))}));c.update()});
+ const a=avgAt12('inc','K'),b=avgAt12('led','K'),z=avgAt12('res','eta'),ratio=b.v/a.v;
+ $('h1').innerHTML=`K incandescente = <b>${a.v.toFixed(1)}</b> lm/W · K LED = <b>${b.v.toFixed(1)}</b> lm/W · razón = <b class="m">${ratio.toFixed(1)}×</b> · η resistencia = ${z.v.toFixed(1)} %<br>H1 <b class="${ratio>=5&&z.v===0?'ok':'bad'}">${ratio>=5&&z.v===0?'se cumple':'no se cumple'}</b> con ${a.m&&b.m?'datos registrados a 12 V':'valores del modelo (registre puntos a 12 V para usar sus datos)'}.`;proj()}
+function proj(){const lm=+$('lm').value,h=+$('hrs').value,n=+$('nl').value,tf=+$('tar').value,pi=+$('pi').value,pl=+$('pl').value,vi=+$('vi').value,vl=+$('vl').value;
+ const ka=avgAt12('inc','K'),kb=avgAt12('led','K'),P=[lm/ka.v,lm/kb.v],pr=[pi,pl],vd=[vi,vl],H=15000;
+ const kwh=P.map(p=>p/1000*h*30*n),clp=kwh.map(k=>k*tf),co=kwh.map(k=>k*EF),tot=P.map((p,i)=>n*(Math.ceil(H/vd[i])*pr[i]+p/1000*H*tf));
+ const row=(l,f,u)=>{const x=f(0),y=f(1);return`<tr><td>${l}</td><td class=n>${x.toLocaleString('es-CL',{maximumFractionDigits:1})}${u}</td><td class=n>${y.toLocaleString('es-CL',{maximumFractionDigits:1})}${u}</td><td class="n ok">−${(x-y).toLocaleString('es-CL',{maximumFractionDigits:1})}${u}</td></tr>`};
+ $('pt').innerHTML=row('Potencia por lámpara',i=>P[i],' W')+row('Energía / mes',i=>kwh[i],' kWh')+row('Costo energía / mes',i=>Math.round(clp[i]),' CLP')+row('CO₂ / mes',i=>co[i],' kg')+row('Costo total en 15.000 h',i=>Math.round(tot[i]),' CLP');
+ $('src').textContent='Potencias calculadas como P = lm / K con K a 12 V ('+(ka.m&&kb.m?'datos registrados':'modelo')+'). Extrapolación a 220 V: proyección, no medición.'}
+function go(id){document.querySelectorAll('.tab').forEach(e=>e.classList.toggle('on',e.id==='t-'+id));document.querySelectorAll('#nav button').forEach(e=>e.classList.toggle('on',e.dataset.t===id))}
+[['lab','🔬 Ensayo'],['guide','📖 Guía'],['res','📊 Resultados'],['proj','💰 Proyección y costos'],['val','👥 Validación'],['doc','🗂 Documentación']].forEach(([i,n])=>{const b=document.createElement('button');b.textContent=n;b.dataset.t=i;b.onclick=()=>go(i);if(i==='lab')b.className='on';$('nav').append(b)});
+$('load').innerHTML=['inc','led','res','mot','off'].map(k=>`<option value=${k}>${LD[k].n}</option>`).join('');
+function dl(name,txt){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/csv'}));a.download=name;a.click()}
+function csv(){if(!rec.length)return alert('Aún no hay datos registrados.');dl('labenergy_datos.csv','carga,V,I_mA,P_W,R_ohm,lm,K_lm_W,eta_pct,origen,semilla\n'+rec.map(x=>[LD[x.k].n,x.v,x.i.toFixed(1),x.p.toFixed(3),x.r.toFixed(2),x.lm.toFixed(1),x.K.toFixed(1),x.eta.toFixed(2),x.src,$('seed').value].join(',')).join('\n'))}
+const SQ=['Creo que me gustaría usar este laboratorio con frecuencia.','Encontré el sistema innecesariamente complejo.','Pensé que el sistema era fácil de usar.','Creo que necesitaría ayuda de un técnico para usarlo.','Las funciones estaban bien integradas.','Hubo demasiada inconsistencia en el sistema.','Imagino que la mayoría aprendería a usarlo rápidamente.','Me pareció muy engorroso de usar.','Me sentí con mucha confianza usándolo.','Necesité aprender muchas cosas antes de usarlo.'];
+$('sus').innerHTML=SQ.map((q,i)=>`<label>${i+1}. ${q}</label><div class=o>${[1,2,3,4,5].map(v=>`<label><input type=radio name=q${i} value=${v}> ${v}</label>`).join('')}</div>`).join('')+'<p class=note>1 = totalmente en desacuerdo · 5 = totalmente de acuerdo</p>';
+try{sus=JSON.parse(localStorage.getItem('labenergy_sus')||'[]')}catch(e){}
+function saveSus(){const a=SQ.map((_,i)=>{const r=document.querySelector(`input[name=q${i}]:checked`);return r?+r.value:null});if(!$('pid').value||a.includes(null))return alert('Ingrese el código del participante y responda las 10 preguntas.');
+ const s=a.reduce((x,v,i)=>x+(i%2===0?v-1:5-v),0)*2.5;sus.push({id:$('pid').value,ok:$('tsk').value,s});try{localStorage.setItem('labenergy_sus',JSON.stringify(sus))}catch(e){}$('pid').value='';document.querySelectorAll('#sus input').forEach(i=>i.checked=false);susR()}
+function susR(){if(!sus.length){$('susRes').textContent='Sesiones registradas: 0 de 10.';return}const m=sus.reduce((x,y)=>x+y.s,0)/sus.length,ok=sus.filter(x=>x.ok==='Sí').length;
+ $('susRes').innerHTML=`Sesiones: <b>${sus.length}</b> de 10 · SUS promedio: <b class="m ${m>=68?'ok':'bad'}">${m.toFixed(1)}</b> (umbral 68) · Tarea sin ayuda: ${ok}/${sus.length}<div class=ov><table><tr><th>Participante</th><th>Tarea</th><th class=n>SUS</th></tr>${sus.map(x=>`<tr><td>${x.id}</td><td>${x.ok}</td><td class=n>${x.s.toFixed(1)}</td></tr>`).join('')}</table></div>`}
+function susCsv(){if(!sus.length)return alert('No hay sesiones.');dl('labenergy_sus.csv','participante,tarea_sin_ayuda,SUS\n'+sus.map(x=>[x.id,x.ok,x.s].join(',')).join('\n'))}
+function tests(){const R=[],T=(n,f)=>{let o;try{o=f()}catch(e){o=false}R.push(`<span class="${o?'ok':'bad'}">${o?'✔':'✘'}</span> ${n}`)};
+ const r0=()=>.5;T('Resistencia 10 Ω: P = V²/R a 12 V (±2 %)',()=>Math.abs(meas('res',12,rng32(1)).p-14.4)<.3);
+ T('LED no conduce con V ≤ 9 V',()=>meas('led',9,r0).i===0);
+ T('Incandescente: R aumenta con V (6 V → 14 V)',()=>meas('inc',14,r0).r>meas('inc',6,r0).r);
+ T('Misma semilla → mismos datos',()=>{const a=rng32(7),b=rng32(7);return meas('inc',12,a).p===meas('inc',12,b).p});
+ T('K LED / K incandescente a 12 V ≥ 5',()=>meas('led',12,r0).K/meas('inc',12,r0).K>=5);
+ T('η dentro de 0–100 % en todo el rango',()=>['inc','led','res','mot'].every(k=>[0,3,6,9,12,15].every(v=>{const e=meas(k,v,r0).eta;return e>=0&&e<=100})));
+ $('tr').innerHTML=R.join('<br>')}
+const tk={ticks:{color:'#7a8b97'},grid:{color:'#e3e9ee'}},ax=(x,y)=>({responsive:true,maintainAspectRatio:false,animation:false,plugins:{legend:{display:y!=='watts',labels:{color:'#51636f'}}},scales:{x:{...tk,title:{display:true,text:x,color:'#7a8b97'}},y:{...tk,beginAtZero:true,title:{display:true,text:y,color:'#7a8b97'}}}});
+const live=new Chart($('live'),{type:'line',data:{labels:[],datasets:[{data:[],borderColor:'#c25e00',backgroundColor:'rgba(194,94,0,.08)',fill:true,pointRadius:0,tension:.25}]},options:ax('segundos','watts')});
+const civ=new Chart($('cIV'),{type:'line',data:{datasets:[]},options:{...ax('V','I (mA)'),scales:{x:{type:'linear',...tk,title:{display:true,text:'V',color:'#7a8b97'}},y:tk.constructor&&{...tk,beginAtZero:true,title:{display:true,text:'I (mA)',color:'#7a8b97'}}}}});
+const ceta=new Chart($('cEta'),{type:'line',data:{datasets:[]},options:{...ax('V','η (%)'),scales:{x:{type:'linear',...tk,title:{display:true,text:'V',color:'#7a8b97'}},y:{...tk,beginAtZero:true,title:{display:true,text:'η (%)',color:'#7a8b97'}}}}});
+setSeed();refresh();render();susR();
+</script></body></html>
